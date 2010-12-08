@@ -1,0 +1,14 @@
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Nick Name</th>
+		<th>Email Address</th>
+	</tr>
+	<%@result.results.each do |result|%>
+		<tr>
+			<td><%=result.name%></td>
+			<td><%=result.nick_name%></td>
+			<td><%=result.email%></td>
+		</tr>
+	<%end%>
+</table>

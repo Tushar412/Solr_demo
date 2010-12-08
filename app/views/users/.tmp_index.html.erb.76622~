@@ -1,0 +1,29 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Nick name</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%=h user.name %></td>
+    <td><%=h user.email %></td>
+    <td><%=h user.nick_name %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<% form_tag search_path, :method => :post do %>
+		<div>
+			<input class="input-text" name="search" type="text" value="Search" title="Search" onblur="if(this.value==''){this.value=this.title;}" onfocus="if(this.value==this.title){this.value='';}" />
+			<input type="submit" value="search"/>
+		</div>
+<% end %>
+<br />
+
+<%= link_to 'New user', new_user_path %>

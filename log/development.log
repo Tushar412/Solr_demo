@@ -1,0 +1,3028 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (20.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (92.7ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW KEYS FROM `schema_migrations`[0m
+  [4;35;1mSQL (93.8ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100819073806)
+  [4;36;1mSQL (194.3ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `email` varchar(255), `nick_name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (27.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100819073806')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-08-19 13:12:12) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 33ms (View: 25, DB: 1) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (20.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-08-19 13:12:15) [GET]
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 27ms (View: 18, DB: 24) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (5.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-08-19 13:12:28) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "user"=>{"name"=>"Tushar", "nick_name"=>"gg", "email"=>"tush@gmail.co"}}
+  [4;36;1mUser Columns (7.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`name`, `created_at`, `updated_at`, `nick_name`, `email`) VALUES('Tushar', '2010-08-19 07:42:28', '2010-08-19 07:42:28', 'gg', 'tush@gmail.co')[0m
+solr_save: User : 1
+to_solr_doc: creating doc for class: User, id: 1
+<doc><field name='id'>User:1</field><field name='type_t'>User</field><field name='pk_i'>1</field><field name='name_t' boost='1.0'>Tushar</field><field name='email_t' boost='1.0'>tush@gmail.co</field><field name='nick_name_t' boost='1.0'>gg</field></doc>
+  [4;35;1mSQL (21.2ms)[0m   [0mROLLBACK[0m
+
+RuntimeError (Couldn't connect to the Solr server at http://localhost:8982/solr. Connection refused - connect(2)):
+  app/controllers/users_controller.rb:46:in `create'
+  app/controllers/users_controller.rb:45:in `create'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (37.9ms)
+Rendered rescues/_request_and_response (31.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-08-19 13:13:52) [GET]
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 93ms (View: 85, DB: 1) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (1.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-08-19 13:13:54) [GET]
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 19ms (View: 10, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-08-19 13:13:55) [GET]
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 18ms (View: 11, DB: 1) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (2.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-08-19 13:14:09) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "user"=>{"name"=>"Tushar Gandhi", "nick_name"=>"df", "email"=>"tush@gmail.co"}}
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`name`, `created_at`, `updated_at`, `nick_name`, `email`) VALUES('Tushar Gandhi', '2010-08-19 07:44:09', '2010-08-19 07:44:09', 'df', 'tush@gmail.co')[0m
+solr_save: User : 2
+to_solr_doc: creating doc for class: User, id: 2
+<doc><field name='id'>User:2</field><field name='type_t'>User</field><field name='pk_i'>2</field><field name='name_t' boost='1.0'>Tushar Gandhi</field><field name='email_t' boost='1.0'>tush@gmail.co</field><field name='nick_name_t' boost='1.0'>df</field></doc>
+  [4;36;1mSQL (35.6ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/users/2
+Completed in 776ms (DB: 39) | 302 Found [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-08-19 13:14:09) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 18ms (View: 9, DB: 2) | 200 OK [http://localhost/users/2]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (2)) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (21.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-08-19 13:16:34) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 21ms (View: 13, DB: 23) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (3.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-08-19 13:16:35) [GET]
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 18ms (View: 9, DB: 5) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-08-19 13:16:50) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "user"=>{"name"=>"Sunny bogawat", "nick_name"=>"sunny123", "email"=>"sunny@yahoo.com"}}
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.3ms)[0m   [0;1mINSERT INTO `users` (`name`, `created_at`, `updated_at`, `nick_name`, `email`) VALUES('Sunny bogawat', '2010-08-19 07:46:50', '2010-08-19 07:46:50', 'sunny123', 'sunny@yahoo.com')[0m
+solr_save: User : 3
+to_solr_doc: creating doc for class: User, id: 3
+<doc><field name='id'>User:3</field><field name='type_t'>User</field><field name='pk_i'>3</field><field name='name_t' boost='1.0'>Sunny bogawat</field><field name='email_t' boost='1.0'>sunny@yahoo.com</field><field name='nick_name_t' boost='1.0'>sunny123</field></doc>
+  [4;35;1mSQL (30.4ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/users/3
+Completed in 479ms (DB: 32) | 302 Found [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-08-19 13:16:50) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 13ms (View: 4, DB: 2) | 200 OK [http://localhost/users/3]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (3)) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-08-19 14:27:40) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 25ms (View: 17, DB: 2) | 200 OK [http://localhost/users/3/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#update (for 127.0.0.1 at 2010-08-19 14:27:48) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "id"=>"3", "user"=>{"name"=>"Tushar bogawat", "nick_name"=>"sunny123", "email"=>"sunny@yahoo.com"}}
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-08-19 08:57:48', `name` = 'Tushar bogawat' WHERE `id` = 3[0m
+solr_save: User : 3
+to_solr_doc: creating doc for class: User, id: 3
+<doc><field name='id'>User:3</field><field name='type_t'>User</field><field name='pk_i'>3</field><field name='name_t' boost='1.0'>Tushar bogawat</field><field name='email_t' boost='1.0'>sunny@yahoo.com</field><field name='nick_name_t' boost='1.0'>sunny123</field></doc>
+  [4;36;1mSQL (43.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/users/3
+Completed in 464ms (DB: 46) | 302 Found [http://localhost/users/3]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-08-19 14:27:48) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 13ms (View: 4, DB: 2) | 200 OK [http://localhost/users/3]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (2,3)) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (2,3)) [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (users.id in (2,3)) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-08-19 14:45:59) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 100ms (View: 91, DB: 2) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 14:46:05) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"Tushar Gandhi"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (2)) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+
+ActionView::TemplateError (undefined method `result' for nil:NilClass) on line #7 of app/views/users/search.html.erb:
+4: 		<th>Nick Name</th>
+5: 		<th>Email Address</th>
+6: 	</tr>
+7: 	<%@results.result.each do |result|%>
+8: 		<tr>
+9: 			<td><%=result.name%></td>
+10: 			<td><%=result.nick_name%></td>
+
+    app/views/users/search.html.erb:7
+    /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (31.1ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 14:46:14) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"Tushar Gandhi"}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (2)) [0m
+  [4;35;1mUser Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+
+ActionView::TemplateError (undefined method `results' for nil:NilClass) on line #7 of app/views/users/search.html.erb:
+4: 		<th>Nick Name</th>
+5: 		<th>Email Address</th>
+6: 	</tr>
+7: 	<%@results.results.each do |result|%>
+8: 		<tr>
+9: 			<td><%=result.name%></td>
+10: 			<td><%=result.nick_name%></td>
+
+    app/views/users/search.html.erb:7
+    /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (30.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 14:46:34) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"Tushar Gandhi"}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (2)) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 30ms (View: 11, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 14:46:46) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"tushar"}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (2,3)) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 20ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (62.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#destroy (for 127.0.0.1 at 2010-08-19 14:46:56) [DELETE]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "id"=>"3"}
+  [4;36;1mUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Destroy (0.3ms)[0m   [0mDELETE FROM `users` WHERE `id` = 3[0m
+solr_destroy: User : 3
+  [4;36;1mSQL (35.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/users
+Completed in 455ms (DB: 100) | 302 Found [http://localhost/users/3]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-08-19 14:46:56) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 16ms (View: 9, DB: 2) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 14:47:02) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"tushar"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (users.id in (2)) [0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 20ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-08-19 14:47:07) [GET]
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 24ms (View: 16, DB: 1) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-08-19 14:47:19) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "user"=>{"name"=>"Sunny", "nick_name"=>"sunny", "email"=>"tushar"}}
+  [4;36;1mUser Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO `users` (`name`, `created_at`, `updated_at`, `nick_name`, `email`) VALUES('Sunny', '2010-08-19 09:17:19', '2010-08-19 09:17:19', 'sunny', 'tushar')[0m
+solr_save: User : 4
+to_solr_doc: creating doc for class: User, id: 4
+<doc><field name='id'>User:4</field><field name='type_t'>User</field><field name='pk_i'>4</field><field name='name_t' boost='1.0'>Sunny</field><field name='email_t' boost='1.0'>tushar</field><field name='nick_name_t' boost='1.0'>sunny</field></doc>
+  [4;35;1mSQL (40.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/users/4
+Completed in 491ms (DB: 44) | 302 Found [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-08-19 14:47:20) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 17ms (View: 8, DB: 2) | 200 OK [http://localhost/users/4]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-08-19 14:47:22) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 24ms (View: 16, DB: 2) | 200 OK [http://localhost/users/4/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-08-19 14:47:23) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 21ms (View: 13, DB: 2) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (21.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 14:47:29) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"tushar"}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4,2)) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 26ms (View: 5, DB: 23) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:06:52) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"tushar"}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4,2)) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 34ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:07:00) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"df"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (2)) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 44ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (26.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-08-19 15:22:20) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 20ms (View: 13, DB: 29) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:22:27) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"tushar"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4,2)) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 19ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:22:35) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"tushar"}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4,2)) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 23ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (19.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-08-19 15:22:39) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 20ms (View: 11, DB: 21) | 200 OK [http://localhost/users/4/edit]
+  [4;36;1mSQL (20.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#update (for 127.0.0.1 at 2010-08-19 15:22:45) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "id"=>"4", "user"=>{"name"=>"Kalpesh", "nick_name"=>"sunny", "email"=>"tushar"}}
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-08-19 09:52:45', `name` = 'Kalpesh' WHERE `id` = 4[0m
+solr_save: User : 4
+to_solr_doc: creating doc for class: User, id: 4
+<doc><field name='id'>User:4</field><field name='type_t'>User</field><field name='pk_i'>4</field><field name='name_t' boost='1.0'>Kalpesh</field><field name='email_t' boost='1.0'>tushar</field><field name='nick_name_t' boost='1.0'>sunny</field></doc>
+  [4;36;1mSQL (36.3ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/users/4
+Completed in 432ms (DB: 58) | 302 Found [http://localhost/users/4]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-08-19 15:22:45) [GET]
+  Parameters: {"id"=>"4"}
+  [4;35;1mUser Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 14ms (View: 5, DB: 2) | 200 OK [http://localhost/users/4]
+  [4;35;1mSQL (16.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-08-19 15:22:48) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 23ms (View: 13, DB: 19) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:22:53) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kalpesh"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (users.id in (4)) [0m
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 26ms (View: 5, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` ORDER BY id[0m
+solr_save: User : 2
+to_solr_doc: creating doc for class: User, id: 2
+<doc><field name='id'>User:2</field><field name='type_t'>User</field><field name='pk_i'>2</field><field name='name_t' boost='1.0'>Tushar Gandhi</field><field name='email_t' boost='1.0'>tush@gmail.co</field><field name='nick_name_t' boost='1.0'>df</field></doc>
+solr_save: User : 4
+to_solr_doc: creating doc for class: User, id: 4
+<doc><field name='id'>User:4</field><field name='type_t'>User</field><field name='pk_i'>4</field><field name='name_t' boost='1.0'>Kalpesh</field><field name='email_t' boost='1.0'>tushar</field><field name='nick_name_t' boost='1.0'>sunny</field></doc>
+Index for User has been rebuilt
+  [4;35;1mSQL (21.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-08-19 15:36:01) [GET]
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 17ms (View: 10, DB: 22) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (24.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-08-19 15:36:16) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "user"=>{"name"=>"Aditi Dhus", "nick_name"=>"adusayshi", "email"=>"aditi@yahoo.com"}}
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.3ms)[0m   [0;1mINSERT INTO `users` (`name`, `created_at`, `updated_at`, `nick_name`, `email`) VALUES('Aditi Dhus', '2010-08-19 10:06:16', '2010-08-19 10:06:16', 'adusayshi', 'aditi@yahoo.com')[0m
+  [4;35;1mSQL (50.5ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/users/5
+Completed in 62ms (DB: 76) | 302 Found [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-08-19 15:36:16) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 15ms (View: 7, DB: 2) | 200 OK [http://localhost/users/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-08-19 15:36:19) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 23ms (View: 15, DB: 2) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:36:23) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"aditi"}
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+
+NoMethodError (undefined method `find_by_solr' for #<Class:0xb6d7dfc8>):
+  app/controllers/users_controller.rb:85:in `search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (23.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:36:33) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"aditi"}
+Rendering template within layouts/users
+Rendering users/search
+Completed in 19ms (View: 2, DB: 0) | 200 OK [http://localhost/search]
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` ORDER BY id[0m
+solr_save: User : 2
+to_solr_doc: creating doc for class: User, id: 2
+<doc><field name='id'>User:2</field><field name='type_t'>User</field><field name='pk_i'>2</field><field name='name_t' boost='1.0'>Tushar Gandhi</field><field name='email_t' boost='1.0'>tush@gmail.co</field><field name='nick_name_t' boost='1.0'>df</field></doc>
+solr_save: User : 4
+to_solr_doc: creating doc for class: User, id: 4
+<doc><field name='id'>User:4</field><field name='type_t'>User</field><field name='pk_i'>4</field><field name='name_t' boost='1.0'>Kalpesh</field><field name='email_t' boost='1.0'>tushar</field><field name='nick_name_t' boost='1.0'>sunny</field></doc>
+solr_save: User : 5
+to_solr_doc: creating doc for class: User, id: 5
+<doc><field name='id'>User:5</field><field name='type_t'>User</field><field name='pk_i'>5</field><field name='name_t' boost='1.0'>Aditi Dhus</field><field name='email_t' boost='1.0'>aditi@yahoo.com</field><field name='nick_name_t' boost='1.0'>adusayshi</field></doc>
+Index for User has been rebuilt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:36:54) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"aditi"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (5)) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 19ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (17.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4,2)) [0m
+  [4;35;1mUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4)) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4)) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:52:17) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"aditi"}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4)) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 19ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#search (for 127.0.0.1 at 2010-08-19 15:52:32) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"aditi"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (users.id in (4)) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/search
+Completed in 20ms (View: 3, DB: 2) | 200 OK [http://localhost/search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:16:05) [GET]
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mMysql::Error: Table 'solr_demo_development.properties' doesn't exist: SELECT * FROM `properties` [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: Table 'solr_demo_development.properties' doesn't exist: SELECT * FROM `properties` ):
+  app/controllers/properties_controller.rb:5:in `index'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (35.0ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100819073806)
+Migrating to CreateProperties (20100819104300)
+  [4;36;1mSQL (75.1ms)[0m   [0;1mCREATE TABLE `properties` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `area` int(11), `no_of_bathrooms` int(11), `no_of_bedrooms` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (15.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100819104300')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `properties`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `properties`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:16:50) [GET]
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 23ms (View: 17, DB: 1) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-19 16:16:51) [GET]
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 27ms (View: 19, DB: 1) | 200 OK [http://localhost/properties/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-08-19 16:17:29) [POST]
+  Parameters: {"property"=>{"name"=>"Splender Properties", "no_of_bedrooms"=>"3", "area"=>"900", "description"=>"This is a splender property", "no_of_bathrooms"=>"2"}, "commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM="}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Create (0.3ms)[0m   [0mINSERT INTO `properties` (`name`, `created_at`, `no_of_bedrooms`, `updated_at`, `area`, `description`, `no_of_bathrooms`) VALUES('Splender Properties', '2010-08-19 10:47:29', 3, '2010-08-19 10:47:29', 900, 'This is a splender property', 2)[0m
+  [4;36;1mSQL (14.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/properties/1
+Completed in 28ms (DB: 16) | 302 Found [http://localhost/properties]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-19 16:17:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.3ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.`id` = 1) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 17ms (View: 9, DB: 2) | 200 OK [http://localhost/properties/1]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` ORDER BY id[0m
+  [4;35;1mProperty Columns (24.8ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+<doc><field name='id'>Property:1</field><field name='type_t'>Property</field><field name='pk_i'>1</field><field name='name_t' boost='1.0'>Splender Properties</field><field name='description_t' boost='1.0'>This is a splender property</field><field name='area_t' boost='1.0'>900</field><field name='no_of_bathrooms_t' boost='1.0'>2</field><field name='no_of_bedrooms_t' boost='1.0'>3</field><field name='created_at_t' boost='1.0'>Thu Aug 19 10:47:29 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 10:47:29 UTC 2010</field></doc>
+Index for Property has been rebuilt
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1)) [0m
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1)) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:21:34) [GET]
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Completed in 18ms (View: 9, DB: 2) | 200 OK [http://localhost/properties]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-19 16:21:49) [GET]
+  [4;35;1mProperty Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 20ms (View: 12, DB: 2) | 200 OK [http://localhost/properties/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-08-19 16:22:11) [POST]
+  Parameters: {"property"=>{"name"=>"Splender Property", "no_of_bedrooms"=>"2", "area"=>"780", "description"=>"This is a property", "no_of_bathrooms"=>"1"}, "commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM="}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.3ms)[0m   [0;1mINSERT INTO `properties` (`name`, `created_at`, `no_of_bedrooms`, `updated_at`, `area`, `description`, `no_of_bathrooms`) VALUES('Splender Property', '2010-08-19 10:52:11', 2, '2010-08-19 10:52:11', 780, 'This is a property', 1)[0m
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+<doc><field name='id'>Property:2</field><field name='type_t'>Property</field><field name='pk_i'>2</field><field name='name_t' boost='1.0'>Splender Property</field><field name='description_t' boost='1.0'>This is a property</field><field name='area_t' boost='1.0'>780</field><field name='no_of_bathrooms_t' boost='1.0'>1</field><field name='no_of_bedrooms_t' boost='1.0'>2</field><field name='created_at_t' boost='1.0'>Thu Aug 19 10:52:11 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 10:52:11 UTC 2010</field></doc>
+  [4;35;1mSQL (52.6ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/properties/2
+Completed in 394ms (DB: 54) | 302 Found [http://localhost/properties]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-19 16:22:12) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mProperty Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 2) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 14ms (View: 4, DB: 2) | 200 OK [http://localhost/properties/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:22:14) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 22ms (View: 14, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#property_search (for 127.0.0.1 at 2010-08-19 16:24:24) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"780"}
+
+NameError (uninitialized constant PropertyController):
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (19.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:25:13) [GET]
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 103ms (View: 31, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (12.9ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:25:16) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 36ms (View: 18, DB: 14) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:25:18) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 21ms (View: 13, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (22.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:25:23) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"780"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+
+ActionView::TemplateError (undefined method `results' for nil:NilClass) on line #9 of app/views/properties/property_search.html.erb:
+6: 		<th>No Of Bedroom</th>
+7: 		<th>No Of Bathroom</th>
+8: 	</tr>
+9: 	<%@result.results.each do |result|%>
+10: 		<tr>
+11: 			<td><%=result.name%></td>
+12: 			<td><%=result.description%></td>
+
+    app/views/properties/property_search.html.erb:9
+    /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (31.8ms)
+Rendered rescues/_request_and_response (2.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:26:04) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"780"}
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (2)) [0m
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 24ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (21.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:27:05) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"Splender"}
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2)) [0m
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 24ms (View: 4, DB: 24) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (19.9ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:28:10) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 23ms (View: 14, DB: 21) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (20.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:28:17) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"Splender"}
+  [4;36;1mProperty Load (2.2ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1)) [0m
+  [4;35;1mProperty Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 26ms (View: 4, DB: 24) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:31:16) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"Splender"}
+  [4;36;1mProperty Load (0.6ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (2,1)) [0m
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 25ms (View: 5, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-19 16:31:55) [GET]
+  [4;36;1mProperty Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 26ms (View: 18, DB: 2) | 200 OK [http://localhost/properties/new]
+  [4;35;1mSQL (19.8ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-08-19 16:32:25) [POST]
+  Parameters: {"property"=>{"name"=>"Kumar", "no_of_bedrooms"=>"2", "area"=>"720", "description"=>"Kumar Builder Pune", "no_of_bathrooms"=>"3"}, "commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM="}
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Create (0.3ms)[0m   [0mINSERT INTO `properties` (`name`, `created_at`, `no_of_bedrooms`, `updated_at`, `area`, `description`, `no_of_bathrooms`) VALUES('Kumar', '2010-08-19 11:02:25', 2, '2010-08-19 11:02:25', 720, 'Kumar Builder Pune', 3)[0m
+solr_save: Property : 3
+to_solr_doc: creating doc for class: Property, id: 3
+<doc><field name='id'>Property:3</field><field name='type_t'>Property</field><field name='pk_i'>3</field><field name='name_t' boost='1.0'>Kumar</field><field name='description_t' boost='1.0'>Kumar Builder Pune</field><field name='area_t' boost='1.0'>720</field><field name='no_of_bathrooms_t' boost='1.0'>3</field><field name='no_of_bedrooms_t' boost='1.0'>2</field><field name='created_at_t' boost='1.0'>Thu Aug 19 11:02:25 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 11:02:25 UTC 2010</field></doc>
+  [4;36;1mSQL (37.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/properties/3
+Completed in 387ms (DB: 59) | 302 Found [http://localhost/properties]
+  [4;35;1mSQL (2.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-19 16:32:26) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mProperty Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.3ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.`id` = 3) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 18ms (View: 9, DB: 4) | 200 OK [http://localhost/properties/3]
+  [4;35;1mSQL (17.6ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:32:27) [GET]
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;36;1mProperty Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Completed in 101ms (View: 93, DB: 21) | 200 OK [http://localhost/properties]
+  [4;35;1mSQL (21.5ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:32:36) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"Sp"}
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (2,3)) [0m
+  [4;36;1mProperty Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 26ms (View: 4, DB: 23) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:34:49) [GET]
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Completed in 25ms (View: 16, DB: 2) | 200 OK [http://localhost/properties]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:34:53) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 15ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (23.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:38:41) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (3)) [0m
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 31ms (View: 3, DB: 25) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:38:55) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (3,1,2)) [0m
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 25ms (View: 7, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (18.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-19 16:39:24) [GET]
+  [4;35;1mProperty Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 21ms (View: 12, DB: 20) | 200 OK [http://localhost/properties/new]
+  [4;36;1mSQL (20.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-08-19 16:39:55) [POST]
+  Parameters: {"property"=>{"name"=>"Kumar & Sons", "no_of_bedrooms"=>"4", "area"=>"1200", "description"=>"Kumar & Sons project", "no_of_bathrooms"=>"2"}, "commit"=>"Create", "authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM="}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.3ms)[0m   [0;1mINSERT INTO `properties` (`name`, `created_at`, `no_of_bedrooms`, `updated_at`, `area`, `description`, `no_of_bathrooms`) VALUES('Kumar & Sons', '2010-08-19 11:09:55', 4, '2010-08-19 11:09:55', 1200, 'Kumar & Sons project', 2)[0m
+solr_save: Property : 4
+to_solr_doc: creating doc for class: Property, id: 4
+<doc><field name='id'>Property:4</field><field name='type_t'>Property</field><field name='pk_i'>4</field><field name='name_t' boost='1.0'>Kumar &amp;amp; Sons</field><field name='description_t' boost='1.0'>Kumar &amp;amp; Sons project</field><field name='area_t' boost='1.0'>1200</field><field name='no_of_bathrooms_t' boost='1.0'>2</field><field name='no_of_bedrooms_t' boost='1.0'>4</field><field name='created_at_t' boost='1.0'>Thu Aug 19 11:09:55 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 11:09:55 UTC 2010</field></doc>
+  [4;35;1mSQL (14.5ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/properties/4
+Completed in 412ms (DB: 37) | 302 Found [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-19 16:39:55) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 4) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 13ms (View: 4, DB: 2) | 200 OK [http://localhost/properties/4]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:39:58) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 28ms (View: 19, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:40:02) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3)) [0m
+  [4;35;1mProperty Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 21ms (View: 3, DB: 1) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:42:00) [GET]
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 33ms (View: 25, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:42:02) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 28ms (View: 19, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:42:06) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3)) [0m
+  [4;35;1mProperty Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 19ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:42:16) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.6ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,4)) [0m
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 25ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (7.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:43:02) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 30ms (View: 21, DB: 9) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (22.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:43:24) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,4)) [0m
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 19ms (View: 4, DB: 24) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (10.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 16:43:40) [GET]
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 29ms (View: 20, DB: 12) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (21.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 16:43:50) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3)) [0m
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 19ms (View: 3, DB: 23) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (30.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 17:41:52) [GET]
+  [4;36;1mProperty Load (58.9ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 309ms (View: 180, DB: 91) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:41:55) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+
+ActionView::TemplateError (undefined method `results' for nil:NilClass) on line #9 of app/views/properties/property_search.html.erb:
+6: 		<th>No Of Bedroom</th>
+7: 		<th>No Of Bathroom</th>
+8: 	</tr>
+9: 	<%@result.results.each do |result|%>
+10: 		<tr>
+11: 			<td><%=result.name%></td>
+12: 			<td><%=result.description%></td>
+
+    app/views/properties/property_search.html.erb:9
+    /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (35.3ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (13.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:42:27) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;36;1mProperty Load (18.3ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,2,4)) [0m
+  [4;35;1mProperty Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 204ms (View: 4, DB: 33) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:47:07) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 23ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:49:23) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 17ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:51:41) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 17ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 17:52:01) [GET]
+  [4;36;1mProperty Load (0.7ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 30ms (View: 20, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:52:07) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 18ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:52:19) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.6ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,2,4)) [0m
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 20ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 17:54:01) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 28ms (View: 20, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:54:03) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 80ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:54:28) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 15ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:54:38) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+  [4;36;1mProperty Load (2.2ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,4)) [0m
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 23ms (View: 6, DB: 3) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 17:59:41) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 18:02:32) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 15ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-19 18:04:01) [GET]
+  [4;36;1mProperty Load (1.5ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 30ms (View: 21, DB: 3) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 18:04:05) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 24ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 18:04:56) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 16ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 18:09:57) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 15ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 18:22:29) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 15ms (View: 2, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 18:33:11) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+
+NameError (undefined local variable or method `order' for #<PropertiesController:0xb6eb6e80>):
+  app/controllers/properties_controller.rb:94:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (22.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-19 18:35:21) [POST]
+  Parameters: {"authenticity_token"=>"FSlgXVqppsnT3kMEvTeFwB8D2Cc91hZG5YfZbCrsSbM=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 15ms (View: 1, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (21.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-20 10:31:32) [GET]
+
+ActionController::RoutingError (No route matches "/property" with {:method=>:get}):
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-20 10:31:38) [GET]
+  [4;36;1mProperty Load (41.6ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 285ms (View: 201, DB: 43) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 10:31:49) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 168ms (View: 13, DB: 1) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 10:36:14) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+
+RuntimeError (There was a problem executing your search: private method `split' called for :name:Symbol):
+  app/controllers/properties_controller.rb:94:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (24.0ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 10:36:36) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 17ms (View: 2, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` ORDER BY id[0m
+  [4;35;1mProperty Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6d03688>
+<doc><field name='id'>Property:1</field><field name='type_t'>Property</field><field name='pk_i'>1</field><field name='name_t' boost='1.0'>Splender Properties</field><field name='name_s_s' boost='1.0'>There was a problem getting the value for the field &apos;name_s&apos;: undefined method `title&apos; for #&amp;lt;Property:0xb6d03688&amp;gt;
+</field><field name='description_t' boost='1.0'>This is a splender property</field><field name='area_t' boost='1.0'>900</field><field name='no_of_bathrooms_t' boost='1.0'>2</field><field name='no_of_bedrooms_t' boost='1.0'>3</field><field name='created_at_t' boost='1.0'>Thu Aug 19 10:47:29 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 10:47:29 UTC 2010</field></doc>
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6d03624>
+<doc><field name='id'>Property:2</field><field name='type_t'>Property</field><field name='pk_i'>2</field><field name='name_t' boost='1.0'>Splender Property</field><field name='name_s_s' boost='1.0'>There was a problem getting the value for the field &apos;name_s&apos;: undefined method `title&apos; for #&amp;lt;Property:0xb6d03624&amp;gt;
+</field><field name='description_t' boost='1.0'>This is a property</field><field name='area_t' boost='1.0'>780</field><field name='no_of_bathrooms_t' boost='1.0'>1</field><field name='no_of_bedrooms_t' boost='1.0'>2</field><field name='created_at_t' boost='1.0'>Thu Aug 19 10:52:11 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 10:52:11 UTC 2010</field></doc>
+solr_save: Property : 3
+to_solr_doc: creating doc for class: Property, id: 3
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6d035d4>
+<doc><field name='id'>Property:3</field><field name='type_t'>Property</field><field name='pk_i'>3</field><field name='name_t' boost='1.0'>Kumar</field><field name='name_s_s' boost='1.0'>There was a problem getting the value for the field &apos;name_s&apos;: undefined method `title&apos; for #&amp;lt;Property:0xb6d035d4&amp;gt;
+</field><field name='description_t' boost='1.0'>Kumar Builder Pune</field><field name='area_t' boost='1.0'>720</field><field name='no_of_bathrooms_t' boost='1.0'>3</field><field name='no_of_bedrooms_t' boost='1.0'>2</field><field name='created_at_t' boost='1.0'>Thu Aug 19 11:02:25 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 11:02:25 UTC 2010</field></doc>
+solr_save: Property : 4
+to_solr_doc: creating doc for class: Property, id: 4
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6d03584>
+<doc><field name='id'>Property:4</field><field name='type_t'>Property</field><field name='pk_i'>4</field><field name='name_t' boost='1.0'>Kumar &amp;amp; Sons</field><field name='name_s_s' boost='1.0'>There was a problem getting the value for the field &apos;name_s&apos;: undefined method `title&apos; for #&amp;lt;Property:0xb6d03584&amp;gt;
+</field><field name='description_t' boost='1.0'>Kumar &amp;amp; Sons project</field><field name='area_t' boost='1.0'>1200</field><field name='no_of_bathrooms_t' boost='1.0'>2</field><field name='no_of_bedrooms_t' boost='1.0'>4</field><field name='created_at_t' boost='1.0'>Thu Aug 19 11:09:55 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 11:09:55 UTC 2010</field></doc>
+Index for Property has been rebuilt
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 10:47:21) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 18ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 10:47:49) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+  [4;36;1mProperty Load (24.2ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,4)) [0m
+  [4;35;1mProperty Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 48ms (View: 4, DB: 26) | 200 OK [http://localhost/property_search]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` ORDER BY id[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6f9e3fc>
+<doc><field name='id'>Property:1</field><field name='type_t'>Property</field><field name='pk_i'>1</field><field name='name_t' boost='1.0'>Splender Properties</field><field name='name_s_s' boost='1.0'>There was a problem getting the value for the field &apos;name_s&apos;: undefined method `title&apos; for #&amp;lt;Property:0xb6f9e3fc&amp;gt;
+</field><field name='description_t' boost='1.0'>This is a splender property</field><field name='area_t' boost='1.0'>900</field><field name='no_of_bathrooms_t' boost='1.0'>2</field><field name='no_of_bedrooms_t' boost='1.0'>3</field><field name='created_at_t' boost='1.0'>Thu Aug 19 10:47:29 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 10:47:29 UTC 2010</field></doc>
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6f9e3ac>
+<doc><field name='id'>Property:2</field><field name='type_t'>Property</field><field name='pk_i'>2</field><field name='name_t' boost='1.0'>Splender Property</field><field name='name_s_s' boost='1.0'>There was a problem getting the value for the field &apos;name_s&apos;: undefined method `title&apos; for #&amp;lt;Property:0xb6f9e3ac&amp;gt;
+</field><field name='description_t' boost='1.0'>This is a property</field><field name='area_t' boost='1.0'>780</field><field name='no_of_bathrooms_t' boost='1.0'>1</field><field name='no_of_bedrooms_t' boost='1.0'>2</field><field name='created_at_t' boost='1.0'>Thu Aug 19 10:52:11 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 10:52:11 UTC 2010</field></doc>
+solr_save: Property : 3
+to_solr_doc: creating doc for class: Property, id: 3
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6f9e35c>
+<doc><field name='id'>Property:3</field><field name='type_t'>Property</field><field name='pk_i'>3</field><field name='name_t' boost='1.0'>Kumar</field><field name='name_s_s' boost='1.0'>There was a problem getting the value for the field &apos;name_s&apos;: undefined method `title&apos; for #&amp;lt;Property:0xb6f9e35c&amp;gt;
+</field><field name='description_t' boost='1.0'>Kumar Builder Pune</field><field name='area_t' boost='1.0'>720</field><field name='no_of_bathrooms_t' boost='1.0'>3</field><field name='no_of_bedrooms_t' boost='1.0'>2</field><field name='created_at_t' boost='1.0'>Thu Aug 19 11:02:25 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 11:02:25 UTC 2010</field></doc>
+solr_save: Property : 4
+to_solr_doc: creating doc for class: Property, id: 4
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6f9e30c>
+<doc><field name='id'>Property:4</field><field name='type_t'>Property</field><field name='pk_i'>4</field><field name='name_t' boost='1.0'>Kumar &amp;amp; Sons</field><field name='name_s_s' boost='1.0'>There was a problem getting the value for the field &apos;name_s&apos;: undefined method `title&apos; for #&amp;lt;Property:0xb6f9e30c&amp;gt;
+</field><field name='description_t' boost='1.0'>Kumar &amp;amp; Sons project</field><field name='area_t' boost='1.0'>1200</field><field name='no_of_bathrooms_t' boost='1.0'>2</field><field name='no_of_bedrooms_t' boost='1.0'>4</field><field name='created_at_t' boost='1.0'>Thu Aug 19 11:09:55 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 11:09:55 UTC 2010</field></doc>
+Index for Property has been rebuilt
+  [4;36;1mSQL (3.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 11:02:13) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+
+RuntimeError (Invalid parameters: sort):
+  app/controllers/properties_controller.rb:94:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (25.5ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 11:02:27) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 21ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 11:14:12) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 14ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 11:14:44) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 88ms (View: 18, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 11:21:03) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 95ms (View: 18, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 11:25:43) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 12:40:22) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 94ms (View: 19, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (8.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-20 12:49:50) [GET]
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 111ms (View: 37, DB: 10) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 12:49:58) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+
+RuntimeError (There was a problem executing your search: Couldn't connect to the Solr server at http://localhost:8983/solr. undefined method `keys' for "name_s_t asc":String):
+  app/controllers/properties_controller.rb:94:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (25.3ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-20 12:52:18) [GET]
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 106ms (View: 37, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (21.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 12:52:25) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 20ms (View: 7, DB: 21) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` ORDER BY id[0m
+  [4;35;1mProperty Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+<doc><field name='id'>Property:1</field><field name='type_t'>Property</field><field name='pk_i'>1</field><field name='name_t' boost='1.0'>Splender Properties</field><field name='description_t' boost='1.0'>This is a splender property</field><field name='area_t' boost='1.0'>900</field><field name='no_of_bathrooms_t' boost='1.0'>2</field><field name='no_of_bedrooms_t' boost='1.0'>3</field><field name='created_at_t' boost='1.0'>Thu Aug 19 10:47:29 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 10:47:29 UTC 2010</field></doc>
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+<doc><field name='id'>Property:2</field><field name='type_t'>Property</field><field name='pk_i'>2</field><field name='name_t' boost='1.0'>Splender Property</field><field name='description_t' boost='1.0'>This is a property</field><field name='area_t' boost='1.0'>780</field><field name='no_of_bathrooms_t' boost='1.0'>1</field><field name='no_of_bedrooms_t' boost='1.0'>2</field><field name='created_at_t' boost='1.0'>Thu Aug 19 10:52:11 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 10:52:11 UTC 2010</field></doc>
+solr_save: Property : 3
+to_solr_doc: creating doc for class: Property, id: 3
+<doc><field name='id'>Property:3</field><field name='type_t'>Property</field><field name='pk_i'>3</field><field name='name_t' boost='1.0'>Kumar</field><field name='description_t' boost='1.0'>Kumar Builder Pune</field><field name='area_t' boost='1.0'>720</field><field name='no_of_bathrooms_t' boost='1.0'>3</field><field name='no_of_bedrooms_t' boost='1.0'>2</field><field name='created_at_t' boost='1.0'>Thu Aug 19 11:02:25 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 11:02:25 UTC 2010</field></doc>
+solr_save: Property : 4
+to_solr_doc: creating doc for class: Property, id: 4
+<doc><field name='id'>Property:4</field><field name='type_t'>Property</field><field name='pk_i'>4</field><field name='name_t' boost='1.0'>Kumar &amp;amp; Sons</field><field name='description_t' boost='1.0'>Kumar &amp;amp; Sons project</field><field name='area_t' boost='1.0'>1200</field><field name='no_of_bathrooms_t' boost='1.0'>2</field><field name='no_of_bedrooms_t' boost='1.0'>4</field><field name='created_at_t' boost='1.0'>Thu Aug 19 11:09:55 UTC 2010</field><field name='updated_at_t' boost='1.0'>Thu Aug 19 11:09:55 UTC 2010</field></doc>
+Index for Property has been rebuilt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-20 13:12:49) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 28ms (View: 19, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-20 13:12:50) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 31ms (View: 23, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:12:55) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+
+RuntimeError (There was a problem executing your search: Couldn't connect to the Solr server at http://localhost:8983/solr. 400 "Missing_sort_order"):
+  app/controllers/properties_controller.rb:94:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (26.2ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:13:26) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,4)) [0m
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 37ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:14:22) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,4)) [0m
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 20ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (23.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:14:42) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"Splender"}
+  [4;36;1mProperty Load (0.7ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2)) [0m
+  [4;35;1mProperty Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 24ms (View: 4, DB: 25) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:15:35) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"Splender"}
+  [4;36;1mProperty Load (2.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2)) [0m
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 33ms (View: 3, DB: 4) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:16:18) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"Splender"}
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2)) [0m
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 20ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-20 13:16:50) [GET]
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 28ms (View: 20, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:18:12) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"Search"}
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2,3,4)) [0m
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 31ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:19:17) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"Search"}
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2,3,4)) [0m
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 21ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:25:26) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"Search"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 54ms (View: 2, DB: 1) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (6.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:27:45) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+  [4;36;1mProperty Load (0.6ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (3,4)) [0m
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 28ms (View: 3, DB: 8) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#destroy (for 127.0.0.1 at 2010-08-20 13:27:50) [DELETE]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "id"=>"3"}
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 3) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Destroy (0.3ms)[0m   [0mDELETE FROM `properties` WHERE `id` = 3[0m
+solr_destroy: Property : 3
+  [4;36;1mSQL (32.3ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/properties
+Completed in 418ms (DB: 34) | 302 Found [http://localhost/properties/3]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-20 13:27:50) [GET]
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Completed in 24ms (View: 17, DB: 2) | 200 OK [http://localhost/properties]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 13:27:55) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (4)) [0m
+  [4;36;1mProperty Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 21ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 15:13:35) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (4)) [0m
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 20ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 15:25:02) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (4)) [0m
+  [4;36;1mProperty Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 42ms (View: 3, DB: 1) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (36.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 15:25:14) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"kumar"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 18ms (View: 2, DB: 36) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 18:06:56) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"Splender"}
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 86ms (View: 2, DB: 0) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-20 18:07:14) [POST]
+  Parameters: {"authenticity_token"=>"POhQPUuslWz+xYHE+okHLENyUwjAmUOiuEhgMfXS9ZY=", "search"=>"Splender"}
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1,2)) [0m
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 26ms (View: 7, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (21.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 11:07:59) [GET]
+  [4;36;1mProperty Load (24.8ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+  [4;35;1mProperty Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Completed in 154ms (View: 118, DB: 48) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:08:05) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"kumar"}
+  [4;36;1mProperty Load (15.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (4)) [0m
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 167ms (View: 24, DB: 16) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (8.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:28:08) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"kumar"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 241ms (View: 19, DB: 10) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProperty Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` ORDER BY id[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6ca92f0>
+<doc><field name='id'>Property:1</field><field name='type_s'>Property</field><field name='pk_i'>1</field><field name='created_at_d' boost='1.0'>2010-08-19T10:47:29Z</field><field name='no_of_bedrooms_i' boost='1.0'>3</field><field name='name_t' boost='1.0'>Splender Properties</field><field name='area_i' boost='1.0'>900</field><field name='updated_at_d' boost='1.0'>2010-08-19T10:47:29Z</field><field name='description_t' boost='1.0'>This is a splender property</field><field name='no_of_bathrooms_i' boost='1.0'>2</field></doc>
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6ca928c>
+<doc><field name='id'>Property:2</field><field name='type_s'>Property</field><field name='pk_i'>2</field><field name='created_at_d' boost='1.0'>2010-08-19T10:52:11Z</field><field name='no_of_bedrooms_i' boost='1.0'>2</field><field name='name_t' boost='1.0'>Splender Property</field><field name='area_i' boost='1.0'>780</field><field name='updated_at_d' boost='1.0'>2010-08-19T10:52:11Z</field><field name='description_t' boost='1.0'>This is a property</field><field name='no_of_bathrooms_i' boost='1.0'>1</field></doc>
+solr_save: Property : 4
+to_solr_doc: creating doc for class: Property, id: 4
+There was a problem getting the value for the field 'name_s': undefined method `title' for #<Property:0xb6ca923c>
+<doc><field name='id'>Property:4</field><field name='type_s'>Property</field><field name='pk_i'>4</field><field name='created_at_d' boost='1.0'>2010-08-19T11:09:55Z</field><field name='no_of_bedrooms_i' boost='1.0'>4</field><field name='name_t' boost='1.0'>Kumar &amp;amp; Sons</field><field name='area_i' boost='1.0'>1200</field><field name='updated_at_d' boost='1.0'>2010-08-19T11:09:55Z</field><field name='description_t' boost='1.0'>Kumar &amp;amp; Sons project</field><field name='no_of_bathrooms_i' boost='1.0'>2</field></doc>
+Index for Property has been rebuilt
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` ORDER BY id[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+<doc><field name='id'>Property:1</field><field name='type_s'>Property</field><field name='pk_i'>1</field><field name='created_at_d' boost='1.0'>2010-08-19T10:47:29Z</field><field name='name_t' boost='1.0'>Splender Properties</field><field name='area_i' boost='1.0'>900</field><field name='updated_at_d' boost='1.0'>2010-08-19T10:47:29Z</field><field name='no_of_bathrooms_i' boost='1.0'>2</field><field name='description_t' boost='1.0'>This is a splender property</field><field name='no_of_bedrooms_i' boost='1.0'>3</field></doc>
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+<doc><field name='id'>Property:2</field><field name='type_s'>Property</field><field name='pk_i'>2</field><field name='created_at_d' boost='1.0'>2010-08-19T10:52:11Z</field><field name='name_t' boost='1.0'>Splender Property</field><field name='area_i' boost='1.0'>780</field><field name='updated_at_d' boost='1.0'>2010-08-19T10:52:11Z</field><field name='no_of_bathrooms_i' boost='1.0'>1</field><field name='description_t' boost='1.0'>This is a property</field><field name='no_of_bedrooms_i' boost='1.0'>2</field></doc>
+solr_save: Property : 4
+to_solr_doc: creating doc for class: Property, id: 4
+<doc><field name='id'>Property:4</field><field name='type_s'>Property</field><field name='pk_i'>4</field><field name='created_at_d' boost='1.0'>2010-08-19T11:09:55Z</field><field name='name_t' boost='1.0'>Kumar &amp;amp; Sons</field><field name='area_i' boost='1.0'>1200</field><field name='updated_at_d' boost='1.0'>2010-08-19T11:09:55Z</field><field name='no_of_bathrooms_i' boost='1.0'>2</field><field name='description_t' boost='1.0'>Kumar &amp;amp; Sons project</field><field name='no_of_bedrooms_i' boost='1.0'>4</field></doc>
+Index for Property has been rebuilt
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:30:08) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"kumar"}
+  [4;35;1mProperty Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (4)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 22ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:30:18) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Splender"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 21ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 11:31:11) [GET]
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 41ms (View: 31, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:31:19) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Splender"}
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 24ms (View: 8, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:31:43) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Splender"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1,2)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 32ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:32:04) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"kumar"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 17ms (View: 2, DB: 1) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:32:13) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"kumar"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (4)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 19ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (5.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#destroy (for 127.0.0.1 at 2010-08-25 11:32:22) [DELETE]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "id"=>"4"}
+  [4;35;1mProperty Columns (4.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.6ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.`id` = 4) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Destroy (0.3ms)[0m   [0;1mDELETE FROM `properties` WHERE `id` = 4[0m
+solr_destroy: Property : 4
+  [4;35;1mSQL (38.9ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/properties
+Completed in 167ms (DB: 49) | 302 Found [http://localhost/properties/4]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 11:32:22) [GET]
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (4.7ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 93ms (View: 12, DB: 6) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:32:30) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"kumar"}
+  [4;36;1mProperty Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 16ms (View: 2, DB: 4) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-25 11:32:45) [GET]
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 26ms (View: 18, DB: 1) | 200 OK [http://localhost/properties/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-08-25 11:33:07) [POST]
+  Parameters: {"property"=>{"name"=>"Lake Town", "no_of_bedrooms"=>"4", "area"=>"1200", "description"=>"This is Lake Town", "no_of_bathrooms"=>"2"}, "commit"=>"Create", "authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg="}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (8.4ms)[0m   [0;1mINSERT INTO `properties` (`name`, `created_at`, `no_of_bedrooms`, `updated_at`, `area`, `description`, `no_of_bathrooms`) VALUES('Lake Town', '2010-08-25 06:03:07', 4, '2010-08-25 06:03:07', 1200, 'This is Lake Town', 2)[0m
+solr_save: Property : 5
+to_solr_doc: creating doc for class: Property, id: 5
+<doc><field name='id'>Property:5</field><field name='type_s'>Property</field><field name='pk_i'>5</field><field name='no_of_bedrooms_i' boost='1.0'>4</field><field name='name_t' boost='1.0'>Lake Town</field><field name='area_i' boost='1.0'>1200</field><field name='created_at_d' boost='1.0'>2010-08-25T06:03:07Z</field><field name='updated_at_d' boost='1.0'>2010-08-25T06:03:07Z</field><field name='description_t' boost='1.0'>This is Lake Town</field><field name='no_of_bathrooms_i' boost='1.0'>2</field></doc>
+  [4;35;1mSQL (54.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/properties/5
+Completed in 386ms (DB: 65) | 302 Found [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-25 11:33:08) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mProperty Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 5) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 19ms (View: 8, DB: 2) | 200 OK [http://localhost/properties/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 11:33:10) [GET]
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 23ms (View: 15, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:33:14) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"lake"}
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 21ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:34:21) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"lake"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+
+RuntimeError (There was a problem executing your search: Couldn't connect to the Solr server at http://127.0.0.1:8982/solr. Connection refused - connect(2) in /home/Projects/solr_demo/vendor/plugins/acts_as_solr/lib/acts_as_solr.rb:50:in `execute'):
+  app/controllers/properties_controller.rb:85:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (24.5ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:34:39) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"lake"}
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 177ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` ORDER BY id[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+<doc><field name='id'>Property:1</field><field name='type_s'>Property</field><field name='pk_i'>1</field><field name='created_at_d' boost='1.0'>2010-08-19T10:47:29Z</field><field name='name_t' boost='1.0'>Splender Properties</field><field name='updated_at_d' boost='1.0'>2010-08-19T10:47:29Z</field><field name='area_i' boost='1.0'>900</field><field name='no_of_bathrooms_i' boost='1.0'>2</field><field name='description_t' boost='1.0'>This is a splender property</field><field name='no_of_bedrooms_i' boost='1.0'>3</field></doc>
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+<doc><field name='id'>Property:2</field><field name='type_s'>Property</field><field name='pk_i'>2</field><field name='created_at_d' boost='1.0'>2010-08-19T10:52:11Z</field><field name='name_t' boost='1.0'>Splender Property</field><field name='updated_at_d' boost='1.0'>2010-08-19T10:52:11Z</field><field name='area_i' boost='1.0'>780</field><field name='no_of_bathrooms_i' boost='1.0'>1</field><field name='description_t' boost='1.0'>This is a property</field><field name='no_of_bedrooms_i' boost='1.0'>2</field></doc>
+solr_save: Property : 5
+to_solr_doc: creating doc for class: Property, id: 5
+<doc><field name='id'>Property:5</field><field name='type_s'>Property</field><field name='pk_i'>5</field><field name='created_at_d' boost='1.0'>2010-08-25T06:03:07Z</field><field name='name_t' boost='1.0'>Lake Town</field><field name='updated_at_d' boost='1.0'>2010-08-25T06:03:07Z</field><field name='area_i' boost='1.0'>1200</field><field name='no_of_bathrooms_i' boost='1.0'>2</field><field name='description_t' boost='1.0'>This is Lake Town</field><field name='no_of_bedrooms_i' boost='1.0'>4</field></doc>
+Index for Property has been rebuilt
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:48:31) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"lake"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 112ms (View: 24, DB: 3) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:49:10) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"splender"}
+  [4;36;1mProperty Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 24ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:49:21) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"splender"}
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (4.7ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1,2)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 40ms (View: 3, DB: 6) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#edit (for 127.0.0.1 at 2010-08-25 11:49:55) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mProperty Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 5) [0m
+Rendering template within layouts/properties
+Rendering properties/edit
+Completed in 28ms (View: 19, DB: 2) | 200 OK [http://localhost/properties/5/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#update (for 127.0.0.1 at 2010-08-25 11:50:02) [PUT]
+  Parameters: {"property"=>{"name"=>"Bisha Town", "no_of_bedrooms"=>"4", "area"=>"1200", "description"=>"This is Lake Town", "no_of_bathrooms"=>"2"}, "commit"=>"Update", "authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "id"=>"5"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 5) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Update (0.3ms)[0m   [0mUPDATE `properties` SET `updated_at` = '2010-08-25 06:20:02', `name` = 'Bisha Town' WHERE `id` = 5[0m
+solr_save: Property : 5
+to_solr_doc: creating doc for class: Property, id: 5
+<doc><field name='id'>Property:5</field><field name='type_s'>Property</field><field name='pk_i'>5</field><field name='name_t' boost='1.0'>Bisha Town</field><field name='no_of_bathrooms_i' boost='1.0'>2</field><field name='no_of_bedrooms_i' boost='1.0'>4</field><field name='created_at_d' boost='1.0'>2010-08-25T06:03:07Z</field><field name='area_i' boost='1.0'>1200</field><field name='updated_at_d' boost='1.0'>2010-08-25T06:20:02Z</field><field name='description_t' boost='1.0'>This is Lake Town</field></doc>
+  [4;36;1mSQL (42.2ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/properties/5
+Completed in 425ms (DB: 44) | 302 Found [http://localhost/properties/5]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-25 11:50:02) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.`id` = 5) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 92ms (View: 83, DB: 2) | 200 OK [http://localhost/properties/5]
+  [4;35;1mSQL (0.5ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 11:50:05) [GET]
+  [4;35;1mProperty Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.3ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 33ms (View: 22, DB: 3) | 200 OK [http://localhost/properties]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:50:08) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 20ms (View: 2, DB: 1) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:50:26) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;36;1mProperty Columns (11.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (7.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 63ms (View: 3, DB: 19) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:58:39) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+
+RuntimeError (There was a problem executing your search: Couldn't connect to the Solr server at http://127.0.0.1:8982/solr. 500 "there_are_more_terms_than_documents_in_field_name_t_but_its_impossible_to_sort_on_tokenized_fields__javalangRuntimeException_there_are_more_terms_than_documents_in_field_name_t_but_its_impossible_to_sort_on_tokenized_fields__at_orgapachelucenesearchFieldCacheImpl$StringIndexCachecreateValueFieldCacheImpljava706__at_orgapachelucenesearchFieldCacheImpl$CachegetFieldCacheImpljava208__at_orgapachelucenesearchFieldCacheImplgetStringIndexFieldCacheImpljava676__at_orgapachelucenesearchFieldComparator$StringOrdValComparatorsetNextReaderFieldComparatorjava667__at_orgapachelucenesearchTopFieldCollector$OneComparatorNonScoringCollectorsetNextReaderTopFieldCollectorjava94__at_orgapachelucenesearchIndexSearchersearchIndexSearcherjava245__at_orgapachelucenesearchSearchersearchSearcherjava171__at_orgapachesolrsearchSolrIndexSearchergetDocListNCSolrIndexSearcherjava988__at_orgapachesolrsearchSolrIndexSearchergetDocListCSolrIndexSearcherjava884__at_orgapachesolrsearchSolrIndexSearchersearchSolrIndexSearcherjava341__at_orgapachesolrhandlercomponentQueryComponentprocessQueryComponentjava182__at_orgapachesolrhandlercomponentSearchHandlerhandleRequestBodySearchHandlerjava195__at_orgapachesolrhandlerRequestHandlerBasehandleRequestRequestHandlerBasejava131__at_orgapachesolrcoreSolrCoreexecuteSolrCorejava1316__at_orgapachesolrservletSolrDispatchFilterexecuteSolrDispatchFilterjava338__at_orgapachesolrservletSolrDispatchFilterdoFilterSolrDispatchFilterjava241__at_orgmortbayjettyservletServletHandler$CachedChaindoFilterServletHandlerjava1089__at_orgmortbayjettyservletServletHandlerhandleServletHandlerjava365__at_orgmortbayjettysecuritySecurityHandlerhandleSecurityHandlerjava216__at_orgmortbayjettyservletSessionHandlerhandleSessionHandlerjava181__at_orgmortbayjettyhandlerContextHandlerhandleContextHandlerjava712__at_orgmortbayjettywebappW" in /home/Projects/solr_demo/vendor/plugins/acts_as_solr/lib/acts_as_solr.rb:52:in `execute'):
+  app/controllers/properties_controller.rb:95:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (25.2ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:59:06) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2,5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 40ms (View: 17, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:59:31) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (3.9ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,2,5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 33ms (View: 3, DB: 5) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (9.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 11:59:51) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+
+RuntimeError (There was a problem executing your search: Couldn't connect to the Solr server at http://127.0.0.1:8982/solr. 400 "can_not_sort_on_undefined_field_name" in /home/Projects/solr_demo/vendor/plugins/acts_as_solr/lib/acts_as_solr.rb:52:in `execute'):
+  app/controllers/properties_controller.rb:95:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (25.3ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:01:58) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (1.1ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1,2,5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 253ms (View: 21, DB: 3) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:03:23) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;36;1mProperty Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1,2,5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 27ms (View: 5, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` ORDER BY id[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+<doc><field name='id'>Property:1</field><field name='type_s'>Property</field><field name='pk_i'>1</field><field name='created_at_d' boost='1.0'>2010-08-19T10:47:29Z</field><field name='no_of_bedrooms_i' boost='1.0'>3</field><field name='name_t' boost='1.0'>Splender Properties</field><field name='updated_at_d' boost='1.0'>2010-08-19T10:47:29Z</field><field name='area_i' boost='1.0'>900</field><field name='description_t' boost='1.0'>This is a splender property</field><field name='name_s_s' boost='1.0'>Splender Properties</field><field name='no_of_bathrooms_i' boost='1.0'>2</field></doc>
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+<doc><field name='id'>Property:2</field><field name='type_s'>Property</field><field name='pk_i'>2</field><field name='created_at_d' boost='1.0'>2010-08-19T10:52:11Z</field><field name='no_of_bedrooms_i' boost='1.0'>2</field><field name='name_t' boost='1.0'>Splender Property</field><field name='updated_at_d' boost='1.0'>2010-08-19T10:52:11Z</field><field name='area_i' boost='1.0'>780</field><field name='description_t' boost='1.0'>This is a property</field><field name='name_s_s' boost='1.0'>Splender Property</field><field name='no_of_bathrooms_i' boost='1.0'>1</field></doc>
+solr_save: Property : 5
+to_solr_doc: creating doc for class: Property, id: 5
+<doc><field name='id'>Property:5</field><field name='type_s'>Property</field><field name='pk_i'>5</field><field name='created_at_d' boost='1.0'>2010-08-25T06:03:07Z</field><field name='no_of_bedrooms_i' boost='1.0'>4</field><field name='name_t' boost='1.0'>Bisha Town</field><field name='updated_at_d' boost='1.0'>2010-08-25T06:20:02Z</field><field name='area_i' boost='1.0'>1200</field><field name='description_t' boost='1.0'>This is Lake Town</field><field name='name_s_s' boost='1.0'>Bisha Town</field><field name='no_of_bathrooms_i' boost='1.0'>2</field></doc>
+Index for Property has been rebuilt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:03:49) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Bisha"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (5,1,2)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 27ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 12:04:06) [GET]
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 30ms (View: 20, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:04:07) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Search"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (2,1,5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 26ms (View: 6, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-25 12:04:12) [GET]
+  [4;36;1mProperty Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 26ms (View: 18, DB: 2) | 200 OK [http://localhost/properties/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-08-25 12:05:52) [POST]
+  Parameters: {"property"=>{"name"=>"Ambey Builders", "no_of_bedrooms"=>"3", "area"=>"900", "description"=>"Nice and good looking house", "no_of_bathrooms"=>"2"}, "commit"=>"Create", "authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg="}
+  [4;36;1mProperty Columns (3.5ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.3ms)[0m   [0;1mINSERT INTO `properties` (`name`, `created_at`, `no_of_bedrooms`, `updated_at`, `area`, `description`, `no_of_bathrooms`) VALUES('Ambey Builders', '2010-08-25 06:35:52', 3, '2010-08-25 06:35:52', 900, 'Nice and good looking house', 2)[0m
+solr_save: Property : 6
+to_solr_doc: creating doc for class: Property, id: 6
+<doc><field name='id'>Property:6</field><field name='type_s'>Property</field><field name='pk_i'>6</field><field name='name_t' boost='1.0'>Ambey Builders</field><field name='name_s_s' boost='1.0'>Ambey Builders</field><field name='no_of_bathrooms_i' boost='1.0'>2</field><field name='created_at_d' boost='1.0'>2010-08-25T06:35:52Z</field><field name='no_of_bedrooms_i' boost='1.0'>3</field><field name='area_i' boost='1.0'>900</field><field name='updated_at_d' boost='1.0'>2010-08-25T06:35:52Z</field><field name='description_t' boost='1.0'>Nice and good looking house</field></doc>
+  [4;35;1mSQL (23.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/properties/6
+Completed in 642ms (DB: 27) | 302 Found [http://localhost/properties]
+  [4;36;1mSQL (3.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-25 12:05:53) [GET]
+  Parameters: {"id"=>"6"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 6) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 27ms (View: 17, DB: 5) | 200 OK [http://localhost/properties/6]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 12:05:55) [GET]
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 33ms (View: 24, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:05:56) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Search"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.7ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (2,1,5,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 244ms (View: 74, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:06:06) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Search"}
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1,2,5,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 39ms (View: 10, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 12:06:13) [GET]
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 100ms (View: 20, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:06:16) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Search"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1,2,5,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 28ms (View: 6, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:06:24) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Search"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (6,5,1,2)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 30ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (5.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-25 12:36:18) [GET]
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 38ms (View: 30, DB: 6) | 200 OK [http://localhost/properties/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-08-25 12:36:35) [POST]
+  Parameters: {"property"=>{"name"=>"Anony", "no_of_bedrooms"=>"2", "area"=>"456", "description"=>"hekk", "no_of_bathrooms"=>"3"}, "commit"=>"Create", "authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg="}
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Create (0.3ms)[0m   [0mINSERT INTO `properties` (`name`, `created_at`, `no_of_bedrooms`, `updated_at`, `area`, `description`, `no_of_bathrooms`) VALUES('Anony', '2010-08-25 07:06:35', 2, '2010-08-25 07:06:35', 456, 'hekk', 3)[0m
+solr_save: Property : 7
+to_solr_doc: creating doc for class: Property, id: 7
+<doc><field name='id'>Property:7</field><field name='type_s'>Property</field><field name='pk_i'>7</field><field name='name_t' boost='1.0'>Anony</field><field name='name_s_s' boost='1.0'>Anony</field><field name='no_of_bathrooms_i' boost='1.0'>3</field><field name='created_at_d' boost='1.0'>2010-08-25T07:06:35Z</field><field name='no_of_bedrooms_i' boost='1.0'>2</field><field name='area_i' boost='1.0'>456</field><field name='updated_at_d' boost='1.0'>2010-08-25T07:06:35Z</field><field name='description_t' boost='1.0'>hekk</field></doc>
+  [4;36;1mSQL (29.7ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/properties/7
+Completed in 374ms (DB: 32) | 302 Found [http://localhost/properties]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-25 12:36:35) [GET]
+  Parameters: {"id"=>"7"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.4ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.`id` = 7) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 13ms (View: 4, DB: 2) | 200 OK [http://localhost/properties/7]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 12:36:37) [GET]
+  [4;35;1mProperty Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 32ms (View: 21, DB: 2) | 200 OK [http://localhost/properties]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-25 12:36:38) [GET]
+  [4;35;1mProperty Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 23ms (View: 13, DB: 2) | 200 OK [http://localhost/properties/new]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 12:36:41) [GET]
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.8ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 33ms (View: 23, DB: 3) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#edit (for 127.0.0.1 at 2010-08-25 12:36:45) [GET]
+  Parameters: {"id"=>"7"}
+  [4;36;1mProperty Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 7) [0m
+Rendering template within layouts/properties
+Rendering properties/edit
+Completed in 30ms (View: 20, DB: 2) | 200 OK [http://localhost/properties/7/edit]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#update (for 127.0.0.1 at 2010-08-25 12:36:50) [PUT]
+  Parameters: {"property"=>{"name"=>"Anony", "no_of_bedrooms"=>"2", "area"=>"456", "description"=>"nice", "no_of_bathrooms"=>"3"}, "commit"=>"Update", "authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "id"=>"7"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 7) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Update (0.4ms)[0m   [0mUPDATE `properties` SET `updated_at` = '2010-08-25 07:06:50', `description` = 'nice' WHERE `id` = 7[0m
+solr_save: Property : 7
+to_solr_doc: creating doc for class: Property, id: 7
+<doc><field name='id'>Property:7</field><field name='type_s'>Property</field><field name='pk_i'>7</field><field name='name_t' boost='1.0'>Anony</field><field name='name_s_s' boost='1.0'>Anony</field><field name='no_of_bathrooms_i' boost='1.0'>3</field><field name='created_at_d' boost='1.0'>2010-08-25T07:06:35Z</field><field name='no_of_bedrooms_i' boost='1.0'>2</field><field name='area_i' boost='1.0'>456</field><field name='updated_at_d' boost='1.0'>2010-08-25T07:06:50Z</field><field name='description_t' boost='1.0'>nice</field></doc>
+  [4;36;1mSQL (45.9ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3004/properties/7
+Completed in 439ms (DB: 48) | 302 Found [http://localhost/properties/7]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-25 12:36:50) [GET]
+  Parameters: {"id"=>"7"}
+  [4;35;1mProperty Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.3ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.`id` = 7) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 14ms (View: 4, DB: 2) | 200 OK [http://localhost/properties/7]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 12:36:52) [GET]
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.3ms)[0m   [0;1mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 56ms (View: 47, DB: 2) | 200 OK [http://localhost/properties]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:36:56) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.9ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (6,7)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 111ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (1.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:37:06) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;35;1mProperty Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (1.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (7,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 23ms (View: 3, DB: 4) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:41:07) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.6ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (7,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 48ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:41:27) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.8ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (6,7)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 38ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-08-25 12:54:15) [GET]
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/new
+Completed in 21ms (View: 13, DB: 1) | 200 OK [http://localhost/properties/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-08-25 12:54:48) [POST]
+  Parameters: {"property"=>{"name"=>"PS Properties", "no_of_bedrooms"=>"4", "area"=>"560", "description"=>"Nice and clean location ", "no_of_bathrooms"=>"2"}, "commit"=>"Create", "authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg="}
+  [4;36;1mProperty Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.3ms)[0m   [0;1mINSERT INTO `properties` (`name`, `created_at`, `no_of_bedrooms`, `updated_at`, `area`, `description`, `no_of_bathrooms`) VALUES('PS Properties', '2010-08-25 07:24:48', 4, '2010-08-25 07:24:48', 560, 'Nice and clean location ', 2)[0m
+solr_save: Property : 8
+to_solr_doc: creating doc for class: Property, id: 8
+<doc><field name='id'>Property:8</field><field name='type_s'>Property</field><field name='pk_i'>8</field><field name='name_t' boost='1.0'>PS Properties</field><field name='name_s_s' boost='1.0'>PS Properties</field><field name='no_of_bathrooms_i' boost='1.0'>2</field><field name='created_at_d' boost='1.0'>2010-08-25T07:24:48Z</field><field name='no_of_bedrooms_i' boost='1.0'>4</field><field name='area_i' boost='1.0'>560</field><field name='updated_at_d' boost='1.0'>2010-08-25T07:24:48Z</field><field name='description_t' boost='1.0'>Nice and clean location </field></doc>
+  [4;35;1mSQL (35.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/properties/8
+Completed in 478ms (DB: 38) | 302 Found [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-08-25 12:54:48) [GET]
+  Parameters: {"id"=>"8"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 8) [0m
+Rendering template within layouts/properties
+Rendering properties/show
+Completed in 13ms (View: 4, DB: 2) | 200 OK [http://localhost/properties/8]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-25 12:54:51) [GET]
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.3ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 109ms (View: 26, DB: 2) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:54:57) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (6,7,8)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 26ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:55:11) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (8,7,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 23ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 12:55:21) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+
+RuntimeError (There was a problem executing your search: Couldn't connect to the Solr server at http://127.0.0.1:8982/solr. 500 "there_are_more_terms_than_documents_in_field_name_t_but_its_impossible_to_sort_on_tokenized_fields__javalangRuntimeException_there_are_more_terms_than_documents_in_field_name_t_but_its_impossible_to_sort_on_tokenized_fields__at_orgapachelucenesearchFieldCacheImpl$StringIndexCachecreateValueFieldCacheImpljava706__at_orgapachelucenesearchFieldCacheImpl$CachegetFieldCacheImpljava208__at_orgapachelucenesearchFieldCacheImplgetStringIndexFieldCacheImpljava676__at_orgapachelucenesearchFieldComparator$StringOrdValComparatorsetNextReaderFieldComparatorjava667__at_orgapachelucenesearchTopFieldCollector$OneComparatorNonScoringCollectorsetNextReaderTopFieldCollectorjava94__at_orgapachelucenesearchIndexSearchersearchIndexSearcherjava245__at_orgapachelucenesearchSearchersearchSearcherjava171__at_orgapachesolrsearchSolrIndexSearchergetDocListNCSolrIndexSearcherjava988__at_orgapachesolrsearchSolrIndexSearchergetDocListCSolrIndexSearcherjava884__at_orgapachesolrsearchSolrIndexSearchersearchSolrIndexSearcherjava341__at_orgapachesolrhandlercomponentQueryComponentprocessQueryComponentjava182__at_orgapachesolrhandlercomponentSearchHandlerhandleRequestBodySearchHandlerjava195__at_orgapachesolrhandlerRequestHandlerBasehandleRequestRequestHandlerBasejava131__at_orgapachesolrcoreSolrCoreexecuteSolrCorejava1316__at_orgapachesolrservletSolrDispatchFilterexecuteSolrDispatchFilterjava338__at_orgapachesolrservletSolrDispatchFilterdoFilterSolrDispatchFilterjava241__at_orgmortbayjettyservletServletHandler$CachedChaindoFilterServletHandlerjava1089__at_orgmortbayjettyservletServletHandlerhandleServletHandlerjava365__at_orgmortbayjettysecuritySecurityHandlerhandleSecurityHandlerjava216__at_orgmortbayjettyservletSessionHandlerhandleSessionHandlerjava181__at_orgmortbayjettyhandlerContextHandlerhandleContextHandlerjava712__at_orgmortbayjettywebappW" in /home/Projects/solr_demo/vendor/plugins/acts_as_solr/lib/acts_as_solr.rb:52:in `execute'):
+  app/controllers/properties_controller.rb:85:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (24.2ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 13:31:42) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;35;1mProperty Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+
+RuntimeError (There was a problem executing your search: Couldn't connect to the Solr server at http://127.0.0.1:8982/solr. 500 "there_are_more_terms_than_documents_in_field_name_t_but_its_impossible_to_sort_on_tokenized_fields__javalangRuntimeException_there_are_more_terms_than_documents_in_field_name_t_but_its_impossible_to_sort_on_tokenized_fields__at_orgapachelucenesearchFieldCacheImpl$StringIndexCachecreateValueFieldCacheImpljava706__at_orgapachelucenesearchFieldCacheImpl$CachegetFieldCacheImpljava208__at_orgapachelucenesearchFieldCacheImplgetStringIndexFieldCacheImpljava676__at_orgapachelucenesearchFieldComparator$StringOrdValComparatorsetNextReaderFieldComparatorjava667__at_orgapachelucenesearchTopFieldCollector$OneComparatorNonScoringCollectorsetNextReaderTopFieldCollectorjava94__at_orgapachelucenesearchIndexSearchersearchIndexSearcherjava245__at_orgapachelucenesearchSearchersearchSearcherjava171__at_orgapachesolrsearchSolrIndexSearchergetDocListNCSolrIndexSearcherjava988__at_orgapachesolrsearchSolrIndexSearchergetDocListCSolrIndexSearcherjava884__at_orgapachesolrsearchSolrIndexSearchersearchSolrIndexSearcherjava341__at_orgapachesolrhandlercomponentQueryComponentprocessQueryComponentjava182__at_orgapachesolrhandlercomponentSearchHandlerhandleRequestBodySearchHandlerjava195__at_orgapachesolrhandlerRequestHandlerBasehandleRequestRequestHandlerBasejava131__at_orgapachesolrcoreSolrCoreexecuteSolrCorejava1316__at_orgapachesolrservletSolrDispatchFilterexecuteSolrDispatchFilterjava338__at_orgapachesolrservletSolrDispatchFilterdoFilterSolrDispatchFilterjava241__at_orgmortbayjettyservletServletHandler$CachedChaindoFilterServletHandlerjava1089__at_orgmortbayjettyservletServletHandlerhandleServletHandlerjava365__at_orgmortbayjettysecuritySecurityHandlerhandleSecurityHandlerjava216__at_orgmortbayjettyservletSessionHandlerhandleSessionHandlerjava181__at_orgmortbayjettyhandlerContextHandlerhandleContextHandlerjava712__at_orgmortbayjettywebappW" in /home/Projects/solr_demo/vendor/plugins/acts_as_solr/lib/acts_as_solr.rb:52:in `execute'):
+  app/controllers/properties_controller.rb:85:in `property_search'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/ruby/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (22.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 13:31:54) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (8,7,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 27ms (View: 5, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 15:11:24) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"nice"}
+  [4;36;1mProperty Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (8,7,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 222ms (View: 201, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 15:11:31) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Anony"}
+  [4;36;1mProperty Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (7)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 31ms (View: 3, DB: 4) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 15:12:46) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"Aand"}
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 229ms (View: 2, DB: 1) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-25 15:12:52) [POST]
+  Parameters: {"authenticity_token"=>"Uu3zrtCT28DD7yQNflH9M6gV4XmOxnx/05ViW+HX1Gg=", "search"=>"and"}
+  [4;35;1mProperty Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.8ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (8,7,6,5,2,1)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 42ms (View: 10, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-26 18:56:39) [GET]
+  [4;36;1mProperty Columns (10.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 109ms (View: 81, DB: 11) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 18:56:44) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"PS"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.8ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (8)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 465ms (View: 27, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 18:56:53) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"Splender"}
+  [4;36;1mProperty Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (2,1)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 54ms (View: 12, DB: 4) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProperty Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.7ms)[0m   [0mSELECT * FROM `properties` ORDER BY id[0m
+solr_save: Property : 1
+to_solr_doc: creating doc for class: Property, id: 1
+<doc>
+  <field name="id">Property:1</field>
+  <field name="type_s">Property</field>
+  <field name="pk_i">1</field>
+  <field name="created_at_d" boost="1.0">2010-08-19T10:47:29Z</field>
+  <field name="name_s_s" boost="1.0">Splender Properties</field>
+  <field name="name_t" boost="1.0">Splender Properties</field>
+  <field name="no_of_bathrooms_i" boost="1.0">2</field>
+  <field name="area_i" boost="1.0">900</field>
+  <field name="no_of_bedrooms_i" boost="1.0">3</field>
+  <field name="updated_at_d" boost="1.0">2010-08-19T10:47:29Z</field>
+  <field name="description_t" boost="1.0">This is a splender property</field>
+</doc>
+solr_save: Property : 2
+to_solr_doc: creating doc for class: Property, id: 2
+<doc>
+  <field name="id">Property:2</field>
+  <field name="type_s">Property</field>
+  <field name="pk_i">2</field>
+  <field name="created_at_d" boost="1.0">2010-08-19T10:52:11Z</field>
+  <field name="name_s_s" boost="1.0">Splender Property</field>
+  <field name="name_t" boost="1.0">Splender Property</field>
+  <field name="no_of_bathrooms_i" boost="1.0">1</field>
+  <field name="area_i" boost="1.0">780</field>
+  <field name="no_of_bedrooms_i" boost="1.0">2</field>
+  <field name="updated_at_d" boost="1.0">2010-08-19T10:52:11Z</field>
+  <field name="description_t" boost="1.0">This is a property</field>
+</doc>
+solr_save: Property : 5
+to_solr_doc: creating doc for class: Property, id: 5
+<doc>
+  <field name="id">Property:5</field>
+  <field name="type_s">Property</field>
+  <field name="pk_i">5</field>
+  <field name="created_at_d" boost="1.0">2010-08-25T06:03:07Z</field>
+  <field name="name_s_s" boost="1.0">Bisha Town</field>
+  <field name="name_t" boost="1.0">Bisha Town</field>
+  <field name="no_of_bathrooms_i" boost="1.0">2</field>
+  <field name="area_i" boost="1.0">1200</field>
+  <field name="no_of_bedrooms_i" boost="1.0">4</field>
+  <field name="updated_at_d" boost="1.0">2010-08-25T06:20:02Z</field>
+  <field name="description_t" boost="1.0">This is Lake Town</field>
+</doc>
+solr_save: Property : 6
+to_solr_doc: creating doc for class: Property, id: 6
+<doc>
+  <field name="id">Property:6</field>
+  <field name="type_s">Property</field>
+  <field name="pk_i">6</field>
+  <field name="created_at_d" boost="1.0">2010-08-25T06:35:52Z</field>
+  <field name="name_s_s" boost="1.0">Ambey Builders</field>
+  <field name="name_t" boost="1.0">Ambey Builders</field>
+  <field name="no_of_bathrooms_i" boost="1.0">2</field>
+  <field name="area_i" boost="1.0">900</field>
+  <field name="no_of_bedrooms_i" boost="1.0">3</field>
+  <field name="updated_at_d" boost="1.0">2010-08-25T06:35:52Z</field>
+  <field name="description_t" boost="1.0">Nice and good looking house</field>
+</doc>
+solr_save: Property : 7
+to_solr_doc: creating doc for class: Property, id: 7
+<doc>
+  <field name="id">Property:7</field>
+  <field name="type_s">Property</field>
+  <field name="pk_i">7</field>
+  <field name="created_at_d" boost="1.0">2010-08-25T07:06:35Z</field>
+  <field name="name_s_s" boost="1.0">Anony</field>
+  <field name="name_t" boost="1.0">Anony</field>
+  <field name="no_of_bathrooms_i" boost="1.0">3</field>
+  <field name="area_i" boost="1.0">456</field>
+  <field name="no_of_bedrooms_i" boost="1.0">2</field>
+  <field name="updated_at_d" boost="1.0">2010-08-25T07:06:50Z</field>
+  <field name="description_t" boost="1.0">nice</field>
+</doc>
+solr_save: Property : 8
+to_solr_doc: creating doc for class: Property, id: 8
+<doc>
+  <field name="id">Property:8</field>
+  <field name="type_s">Property</field>
+  <field name="pk_i">8</field>
+  <field name="created_at_d" boost="1.0">2010-08-25T07:24:48Z</field>
+  <field name="name_s_s" boost="1.0">PS Properties</field>
+  <field name="name_t" boost="1.0">PS Properties</field>
+  <field name="no_of_bathrooms_i" boost="1.0">2</field>
+  <field name="area_i" boost="1.0">560</field>
+  <field name="no_of_bedrooms_i" boost="1.0">4</field>
+  <field name="updated_at_d" boost="1.0">2010-08-25T07:24:48Z</field>
+  <field name="description_t" boost="1.0">Nice and clean location </field>
+</doc>
+Index for Property has been rebuilt
+  [4;36;1mSQL (28.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-08-26 18:58:22) [GET]
+  [4;36;1mProperty Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/properties
+Rendering properties/index
+Completed in 43ms (View: 30, DB: 30) | 200 OK [http://localhost/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (9.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 18:58:29) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"this"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.6ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (8,7,6,5,2,1)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 100ms (View: 4, DB: 11) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 18:58:54) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"Bisha"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.4ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 19ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 18:59:21) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"900"}
+  [4;36;1mProperty Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (8,7,6,5,2,1)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 35ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 19:00:09) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"Splender"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (1)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 23ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 19:00:24) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"Ambey"}
+  [4;36;1mProperty Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.5ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 22ms (View: 4, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 19:00:31) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"Anony"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 32ms (View: 2, DB: 3) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 19:00:43) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"This"}
+  [4;35;1mProperty Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.5ms)[0m   [0;1mSELECT * FROM `properties` WHERE (properties.id in (1,6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 28ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 19:01:11) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"Lake"}
+  [4;35;1mProperty Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 18ms (View: 2, DB: 1) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 19:02:08) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>"Lake"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.8ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (5)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 22ms (View: 4, DB: 3) | 200 OK [http://localhost/property_search]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#property_search (for 127.0.0.1 at 2010-08-26 19:02:18) [POST]
+  Parameters: {"authenticity_token"=>"/yZVDuwlIbWDbrVE0dJdY3Kg2PydkkOs/kPd8v+6S38=", "search"=>" good looking"}
+  [4;36;1mProperty Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.7ms)[0m   [0mSELECT * FROM `properties` WHERE (properties.id in (6)) [0m
+Rendering template within layouts/properties
+Rendering properties/property_search
+Completed in 27ms (View: 3, DB: 2) | 200 OK [http://localhost/property_search]

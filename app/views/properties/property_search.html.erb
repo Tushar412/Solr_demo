@@ -1,0 +1,18 @@
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Area</th>
+		<th>No Of Bedroom</th>
+		<th>No Of Bathroom</th>
+	</tr>
+	<%@result.results.each do |result|%>
+		<tr>
+			<td><%=result.name%></td>
+			<td><%=result.description%></td>
+			<td><%=result.area%></td>
+			<td><%=result.no_of_bedrooms%></td>
+			<td><%=result.no_of_bathrooms%></td>
+		</tr>
+	<%end%>
+</table>

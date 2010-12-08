@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @property.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @property.description %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%=h @property.area %>
+</p>
+
+<p>
+  <b>No of bathrooms:</b>
+  <%=h @property.no_of_bathrooms %>
+</p>
+
+<p>
+  <b>No of bedrooms:</b>
+  <%=h @property.no_of_bedrooms %>
+</p>
+
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
